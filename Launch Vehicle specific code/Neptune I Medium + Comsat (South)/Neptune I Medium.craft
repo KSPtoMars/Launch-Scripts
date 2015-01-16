@@ -2,7 +2,7 @@ ship = Neptune I Medium
 version = 0.90.0
 description = 
 type = VAB
-size = 10.15115,62.71606,8.943377
+size = 14.03365,61.59329,12.82853
 PART
 {
 	part = stackDecouplerMini_4294450062
@@ -593,7 +593,7 @@ PART
 		type = ServiceModule
 		utilization = 86
 		mass = 0.8
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 250
 		type_UIEditor
 		{
@@ -6877,7 +6877,7 @@ PART
 		type = Default
 		utilization = 86
 		mass = 0.544672
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 17021
 		type_UIEditor
 		{
@@ -7817,6 +7817,7 @@ PART
 	link = KWsrbUllage_4294510206
 	link = mumech.hullcam_4294497810
 	link = mumech.hullcam_4294495718
+	link = FASAUmbilicalTower_4270389590
 	attN = top,KzInterstageAdapter2_4294433030
 	attN = bottom,NP.lfe.25m.BroncoSingle_4294432920
 	EVENTS
@@ -8006,7 +8007,7 @@ PART
 		type = Default
 		utilization = 86
 		mass = 2.463179
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 115838
 		type_UIEditor
 		{
@@ -9106,7 +9107,7 @@ PART
 		type = Default
 		utilization = 86
 		mass = 1.182512
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 55611
 		type_UIEditor
 		{
@@ -10178,14 +10179,12 @@ PART
 	link = NP.lfe.375m.Bearcat3x_4294432536
 	link = radialDecoupler1-2_4294362018
 	link = radialDecoupler1-2_4294361898
-	link = launchClamp1_4294303350
-	link = launchClamp1_4294294100
-	link = launchClamp1_4294304692
-	link = launchClamp1_4294293016
-	link = launchClamp1_4294301816
-	link = launchClamp1_4294291838
 	link = mumech.hullcam_4294499892
 	link = mumech.hullcam_4294499846
+	link = FASAUmbilicalTower_4270402808
+	link = FASAUmbilicalTower_4270392278
+	link = FASAUmbilicalTower_4270392132
+	link = FASAUmbilicalTower_4270391986
 	attN = top,proceduralTankRealFuels_4294432672
 	attN = bottom,NP.lfe.375m.Bearcat3x_4294432536
 	EVENTS
@@ -10375,7 +10374,7 @@ PART
 		type = Default
 		utilization = 86
 		mass = 7.820431
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 367778
 		type_UIEditor
 		{
@@ -11112,7 +11111,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 4.15
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 23904
 		type_UIEditor
 		{
@@ -11880,7 +11879,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 4.15
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 23904
 		type_UIEditor
 		{
@@ -12345,1260 +12344,6 @@ PART
 }
 PART
 {
-	part = launchClamp1_4294303350
-	partName = Part
-	pos = -1.788263,5.320763,2.250396
-	attPos = 0,0,0
-	attPos0 = -1.773579,-9.858101,3.07193
-	rot = -5.641651E-05,0.9659258,0.0002105493,0.258819
-	attRot = 0,0,0,1
-	attRot0 = -5.641651E-05,0.9659258,0.0002105493,0.258819
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 3
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294294100
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.37021
-		height = 5.980499
-		towerRot = 5.641651E-05,-0.9659258,-0.0002105493,0.258819
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
-	part = launchClamp1_4294294100
-	partName = Part
-	pos = 1.768066,5.320763,-3.909346
-	attPos = 0,0,0
-	attPos0 = 1.773579,-9.858101,-3.07193
-	rot = 0.0002105493,0.258819,5.64165E-05,-0.9659258
-	attRot = 0,0,0,1
-	attRot0 = 0.0002105493,0.258819,5.64165E-05,-0.9659258
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 4
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294303350
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.37021
-		height = 5.980499
-		towerRot = -0.0002105493,-0.258819,-5.64165E-05,-0.9659258
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
-	part = launchClamp1_4294304692
-	partName = Part
-	pos = -3.566427,5.390129,-0.8294734
-	attPos = 0,0,0
-	attPos0 = -3.548277,-9.792404,1.788139E-07
-	rot = -0.0001541346,0.7071068,0.0001541346,0.7071068
-	attRot = 0,0,0,1
-	attRot0 = -0.0001541346,0.7071068,0.0001541346,0.7071068
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 5
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294293016
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.397701
-		height = 6.049866
-		towerRot = 0.0001541346,-0.7071068,-0.0001541346,0.7071068
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
-	part = launchClamp1_4294293016
-	partName = Part
-	pos = 3.54623,5.390129,-0.8294761
-	attPos = 0,0,0
-	attPos0 = 3.548277,-9.792404,-4.768372E-07
-	rot = 0.0001541346,0.7071067,0.0001541346,-0.7071068
-	attRot = 0,0,0,1
-	attRot0 = 0.0001541346,0.7071067,0.0001541346,-0.7071068
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 6
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294304692
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.397701
-		height = 6.049866
-		towerRot = -0.0001541346,-0.7071067,-0.0001541346,-0.7071068
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
-	part = launchClamp1_4294301816
-	partName = Part
-	pos = -1.788263,5.181198,-3.909346
-	attPos = 0,0,0
-	attPos0 = -1.775087,-10.00671,-3.074539
-	rot = 0.0002105435,-0.2588193,-5.641501E-05,-0.9659258
-	attRot = 0,0,0,1
-	attRot0 = 0.0002105435,-0.2588193,-5.641501E-05,-0.9659258
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 7
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294291838
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.314897
-		height = 5.840935
-		towerRot = -0.0002105435,0.2588193,5.641501E-05,-0.9659258
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
-	part = launchClamp1_4294291838
-	partName = Part
-	pos = 1.768067,5.181198,2.250396
-	attPos = 0,0,0
-	attPos0 = 1.775087,-10.00671,3.074539
-	rot = -5.641503E-05,-0.9659258,-0.0002105435,0.2588194
-	attRot = 0,0,0,1
-	attRot0 = -5.641503E-05,-0.9659258,-0.0002105435,0.2588194
-	mir = 1,1,1
-	symMethod = Radial
-	istg = 7
-	dstg = 10
-	sidx = 8
-	sqor = 7
-	attm = 1
-	modCost = 0
-	modMass = 0
-	modSize = (0.0, 0.0, 0.0)
-	sym = launchClamp1_4294301816
-	srfN = srfAttach,proceduralTankRealFuels_4294432604
-	EVENTS
-	{
-	}
-	ACTIONS
-	{
-	}
-	PARTDATA
-	{
-	}
-	MODULE
-	{
-		name = LaunchClamp
-		isEnabled = True
-		scaleFactor = 2.314897
-		height = 5.840935
-		towerRot = 5.641503E-05,0.9659258,0.0002105435,0.2588194
-		EVENTS
-		{
-			Release
-			{
-				active = False
-				guiActive = True
-				guiIcon = Release Clamp
-				guiName = Release Clamp
-				category = Release Clamp
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ReleaseClamp
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleGenerator
-		isEnabled = True
-		generatorIsActive = False
-		throttle = 0
-		EVENTS
-		{
-			Activate
-			{
-				active = True
-				guiActive = True
-				guiIcon = Activate Generator
-				guiName = Activate Generator
-				category = Activate Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-			Shutdown
-			{
-				active = True
-				guiActive = True
-				guiIcon = Shutdown Generator
-				guiName = Shutdown Generator
-				category = Shutdown Generator
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-			ToggleAction
-			{
-				actionGroup = None
-			}
-			ActivateAction
-			{
-				actionGroup = None
-			}
-			ShutdownAction
-			{
-				actionGroup = None
-			}
-		}
-	}
-	MODULE
-	{
-		name = ModuleTestSubject
-		isEnabled = True
-		EVENTS
-		{
-			RunTestEvent
-			{
-				active = False
-				guiActive = True
-				guiIcon = Run Test
-				guiName = Run Test
-				category = Run Test
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = BBModule
-		isEnabled = True
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = KOSNameTag
-		isEnabled = True
-		nameTag = 
-		EVENTS
-		{
-			PopupNameTagChanger
-			{
-				active = True
-				guiActive = True
-				guiActiveEditor = True
-				guiIcon = Change Name Tag
-				guiName = Change Name Tag
-				category = Change Name Tag
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = RefuelingPump
-		isEnabled = True
-		enablePump = False
-		pump_rate = 100
-		timestamp = 291528.577668052
-		EVENTS
-		{
-			TogglePump
-			{
-				active = True
-				guiActive = False
-				guiActiveEditor = True
-				guiIcon = Toggle Pump
-				guiName = Toggle Pump
-				category = Toggle Pump
-				guiActiveUnfocused = False
-				unfocusedRange = 2
-				externalToEVAOnly = True
-			}
-		}
-		ACTIONS
-		{
-		}
-	}
-	MODULE
-	{
-		name = ModuleRTAntennaPassive
-		isEnabled = True
-		IsRTAntenna = True
-		IsRTActive = True
-		IsRTPowered = True
-		IsRTBroken = False
-		RTDishCosAngle = 1
-		RTOmniRange = 5000
-		RTDishRange = -1
-		EVENTS
-		{
-		}
-		ACTIONS
-		{
-		}
-	}
-}
-PART
-{
 	part = KWsrbUllage_4294510712
 	partName = Part
 	pos = 1.773234,35.59048,-0.8294749
@@ -13744,7 +12489,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -13982,7 +12727,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -14220,7 +12965,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -14458,7 +13203,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -14696,7 +13441,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -14934,7 +13679,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -15169,7 +13914,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -15404,7 +14149,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -15639,7 +14384,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.1
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 68
 		type_UIEditor
 		{
@@ -17748,7 +16493,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.044
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 20
 		type_UIEditor
 		{
@@ -17993,7 +16738,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.044
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 20
 		type_UIEditor
 		{
@@ -18238,7 +16983,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.044
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 20
 		type_UIEditor
 		{
@@ -18483,7 +17228,7 @@ PART
 		type = Solid
 		utilization = 86
 		mass = 0.044
-		timestamp = 291528.577668052
+		timestamp = 1013464.91244103
 		volume = 20
 		type_UIEditor
 		{
@@ -18572,5 +17317,1372 @@ PART
 		isTweakable = True
 		hideFlow = False
 		flowMode = Both
+	}
+}
+PART
+{
+	part = FASAUmbilicalTower_4270402808
+	partName = Strut
+	pos = 5.363124,5.41354,-6.273408
+	attPos = 0,0,0
+	attPos0 = 5.37068,-9.784317,-5.44139
+	rot = 0.0002013853,0.3826835,8.341652E-05,-0.9238795
+	attRot = 0,0,0,1
+	attRot0 = 0.0002013853,0.3826835,8.341652E-05,-0.9238795
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 7
+	dstg = 51
+	sidx = 3
+	sqor = 7
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = FASAUmbilicalTower_4270392278
+	sym = FASAUmbilicalTower_4270392132
+	sym = FASAUmbilicalTower_4270391986
+	srfN = srfAttach,proceduralTankRealFuels_4294432604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = LaunchClamp
+		isEnabled = True
+		scaleFactor = 3.706769
+		height = 7.41354
+		towerRot = -0.0002013853,-0.3826835,-8.341652E-05,-0.9238795
+		EVENTS
+		{
+			Release
+			{
+				active = False
+				guiActive = True
+				guiIcon = Release Clamp
+				guiName = Release Clamp
+				category = Release Clamp
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ReleaseClamp
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = MonoPropellant On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = MonoPropellant Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = Electrical On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = Electrical Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = BBModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = KOSNameTag
+		isEnabled = True
+		nameTag = 
+		EVENTS
+		{
+			PopupNameTagChanger
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiIcon = Change Name Tag
+				guiName = Change Name Tag
+				category = Change Name Tag
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = RefuelingPump
+		isEnabled = True
+		enablePump = False
+		pump_rate = 100
+		timestamp = 1013464.91244103
+		EVENTS
+		{
+			TogglePump
+			{
+				active = True
+				guiActive = False
+				guiActiveEditor = True
+				guiIcon = Toggle Pump
+				guiName = Toggle Pump
+				category = Toggle Pump
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = FlightEngineerModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = TweakScale
+		isEnabled = True
+		tweakScale = 1
+		currentScale = 1
+		defaultScale = 1
+		isFreeScale = False
+		version = 1.50.0.0
+		defaultTransformScale = (1, 1, 1)
+		DryCost = 100
+		tweakScale_UIEditor
+		{
+			controlEnabled = True
+			minValue = 0.625
+			maxValue = 5
+			incrementLarge = 1.25
+			incrementSmall = 0.125
+			incrementSlide = 0.001
+		}
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleRTAntennaPassive
+		isEnabled = True
+		IsRTAntenna = True
+		IsRTActive = True
+		IsRTPowered = True
+		IsRTBroken = False
+		RTDishCosAngle = 1
+		RTOmniRange = 5000
+		RTDishRange = -1
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = FASAUmbilicalTower_4270392278
+	partName = Strut
+	pos = -5.454031,5.413536,-6.202698
+	attPos = 0,0,0
+	attPos0 = -5.44139,-9.784317,-5.37068
+	rot = 0.0002013853,-0.3826834,-8.34165E-05,-0.9238796
+	attRot = 0,0,0,1
+	attRot0 = 0.0002013853,-0.3826834,-8.34165E-05,-0.9238796
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 7
+	dstg = 51
+	sidx = 4
+	sqor = 7
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = FASAUmbilicalTower_4270402808
+	sym = FASAUmbilicalTower_4270392132
+	sym = FASAUmbilicalTower_4270391986
+	srfN = srfAttach,proceduralTankRealFuels_4294432604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = LaunchClamp
+		isEnabled = True
+		scaleFactor = 3.706768
+		height = 7.413536
+		towerRot = -0.0002013853,0.3826834,8.34165E-05,-0.9238796
+		EVENTS
+		{
+			Release
+			{
+				active = False
+				guiActive = True
+				guiIcon = Release Clamp
+				guiName = Release Clamp
+				category = Release Clamp
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ReleaseClamp
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = MonoPropellant On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = MonoPropellant Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = Electrical On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = Electrical Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = BBModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = KOSNameTag
+		isEnabled = True
+		nameTag = 
+		EVENTS
+		{
+			PopupNameTagChanger
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiIcon = Change Name Tag
+				guiName = Change Name Tag
+				category = Change Name Tag
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = RefuelingPump
+		isEnabled = True
+		enablePump = False
+		pump_rate = 100
+		timestamp = 1013464.91244103
+		EVENTS
+		{
+			TogglePump
+			{
+				active = True
+				guiActive = False
+				guiActiveEditor = True
+				guiIcon = Toggle Pump
+				guiName = Toggle Pump
+				category = Toggle Pump
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = FlightEngineerModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = TweakScale
+		isEnabled = True
+		tweakScale = 1
+		currentScale = 1
+		defaultScale = 1
+		isFreeScale = False
+		version = 1.50.0.0
+		defaultTransformScale = (1, 1, 1)
+		DryCost = 100
+		tweakScale_UIEditor
+		{
+			controlEnabled = True
+			minValue = 0.625
+			maxValue = 5
+			incrementLarge = 1.25
+			incrementSmall = 0.125
+			incrementSlide = 0.001
+		}
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleRTAntennaPassive
+		isEnabled = True
+		IsRTAntenna = True
+		IsRTActive = True
+		IsRTPowered = True
+		IsRTBroken = False
+		RTDishCosAngle = 1
+		RTOmniRange = 5000
+		RTDishRange = -1
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = FASAUmbilicalTower_4270392132
+	partName = Strut
+	pos = -5.38332,5.41354,4.614459
+	attPos = 0,0,0
+	attPos0 = -5.370679,-9.784317,5.441391
+	rot = 8.341652E-05,-0.9238796,-0.0002013853,-0.3826834
+	attRot = 0,0,0,1
+	attRot0 = 8.341651E-05,-0.9238795,-0.0002013853,-0.3826834
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 7
+	dstg = 51
+	sidx = 5
+	sqor = 7
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = FASAUmbilicalTower_4270402808
+	sym = FASAUmbilicalTower_4270392278
+	sym = FASAUmbilicalTower_4270391986
+	srfN = srfAttach,proceduralTankRealFuels_4294432604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = LaunchClamp
+		isEnabled = True
+		scaleFactor = 3.706769
+		height = 7.41354
+		towerRot = -8.341652E-05,0.9238796,0.0002013853,-0.3826834
+		EVENTS
+		{
+			Release
+			{
+				active = False
+				guiActive = True
+				guiIcon = Release Clamp
+				guiName = Release Clamp
+				category = Release Clamp
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ReleaseClamp
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = MonoPropellant On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = MonoPropellant Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = Electrical On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = Electrical Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = BBModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = KOSNameTag
+		isEnabled = True
+		nameTag = 
+		EVENTS
+		{
+			PopupNameTagChanger
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiIcon = Change Name Tag
+				guiName = Change Name Tag
+				category = Change Name Tag
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = RefuelingPump
+		isEnabled = True
+		enablePump = True
+		pump_rate = 100
+		timestamp = 1013464.91244103
+		EVENTS
+		{
+			TogglePump
+			{
+				active = True
+				guiActive = False
+				guiActiveEditor = True
+				guiIcon = Toggle Pump
+				guiName = Toggle Pump
+				category = Toggle Pump
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = FlightEngineerModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = TweakScale
+		isEnabled = True
+		tweakScale = 1
+		currentScale = 1
+		defaultScale = 1
+		isFreeScale = False
+		version = 1.50.0.0
+		defaultTransformScale = (1, 1, 1)
+		DryCost = 100
+		tweakScale_UIEditor
+		{
+			controlEnabled = True
+			minValue = 0.625
+			maxValue = 5
+			incrementLarge = 1.25
+			incrementSmall = 0.125
+			incrementSlide = 0.001
+		}
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleRTAntennaPassive
+		isEnabled = True
+		IsRTAntenna = True
+		IsRTActive = True
+		IsRTPowered = True
+		IsRTBroken = False
+		RTDishCosAngle = 1
+		RTOmniRange = 5000
+		RTDishRange = -1
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = FASAUmbilicalTower_4270391986
+	partName = Strut
+	pos = 5.433835,5.413532,4.543748
+	attPos = 0,0,0
+	attPos0 = 5.44139,-9.784317,5.370679
+	rot = -8.34165E-05,-0.9238796,-0.0002013853,0.3826834
+	attRot = 0,0,0,1
+	attRot0 = -8.34165E-05,-0.9238796,-0.0002013853,0.3826834
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 7
+	dstg = 51
+	sidx = 6
+	sqor = 7
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	sym = FASAUmbilicalTower_4270402808
+	sym = FASAUmbilicalTower_4270392278
+	sym = FASAUmbilicalTower_4270392132
+	srfN = srfAttach,proceduralTankRealFuels_4294432604
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = LaunchClamp
+		isEnabled = True
+		scaleFactor = 3.706766
+		height = 7.413532
+		towerRot = 8.34165E-05,0.9238796,0.0002013853,0.3826834
+		EVENTS
+		{
+			Release
+			{
+				active = False
+				guiActive = True
+				guiIcon = Release Clamp
+				guiName = Release Clamp
+				category = Release Clamp
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ReleaseClamp
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = MonoPropellant On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = MonoPropellant Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = Electrical On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = Electrical Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = BBModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = KOSNameTag
+		isEnabled = True
+		nameTag = 
+		EVENTS
+		{
+			PopupNameTagChanger
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiIcon = Change Name Tag
+				guiName = Change Name Tag
+				category = Change Name Tag
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = RefuelingPump
+		isEnabled = True
+		enablePump = False
+		pump_rate = 100
+		timestamp = 1013464.91244103
+		EVENTS
+		{
+			TogglePump
+			{
+				active = True
+				guiActive = False
+				guiActiveEditor = True
+				guiIcon = Toggle Pump
+				guiName = Toggle Pump
+				category = Toggle Pump
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = FlightEngineerModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = TweakScale
+		isEnabled = True
+		tweakScale = 1
+		currentScale = 1
+		defaultScale = 1
+		isFreeScale = False
+		version = 1.50.0.0
+		defaultTransformScale = (1, 1, 1)
+		DryCost = 100
+		tweakScale_UIEditor
+		{
+			controlEnabled = True
+			minValue = 0.625
+			maxValue = 5
+			incrementLarge = 1.25
+			incrementSmall = 0.125
+			incrementSlide = 0.001
+		}
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleRTAntennaPassive
+		isEnabled = True
+		IsRTAntenna = True
+		IsRTActive = True
+		IsRTPowered = True
+		IsRTBroken = False
+		RTDishCosAngle = 1
+		RTOmniRange = 5000
+		RTDishRange = -1
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+}
+PART
+{
+	part = FASAUmbilicalTower_4270389590
+	partName = Strut
+	pos = 6.638392,34.90062,-0.8794739
+	attPos = 0,0,0
+	attPos0 = 6.641436,-6.528488,-0.04999888
+	rot = 0.0002083572,0.7071068,0.0002083572,-0.7071068
+	attRot = 0,0,0,1
+	attRot0 = 0.0002083572,0.7071068,0.0002083572,-0.7071068
+	mir = 1,1,1
+	symMethod = Radial
+	istg = 7
+	dstg = 47
+	sidx = 7
+	sqor = 7
+	attm = 1
+	modCost = 0
+	modMass = 0
+	modSize = (0.0, 0.0, 0.0)
+	srfN = srfAttach,proceduralTankRealFuels_4294432988
+	EVENTS
+	{
+	}
+	ACTIONS
+	{
+	}
+	PARTDATA
+	{
+	}
+	MODULE
+	{
+		name = LaunchClamp
+		isEnabled = True
+		scaleFactor = 18.45031
+		height = 36.90062
+		towerRot = -0.0002083572,-0.7071068,-0.0002083572,-0.7071068
+		EVENTS
+		{
+			Release
+			{
+				active = False
+				guiActive = True
+				guiIcon = Release Clamp
+				guiName = Release Clamp
+				category = Release Clamp
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ReleaseClamp
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = MonoPropellant On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = MonoPropellant Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = ModuleGenerator
+		isEnabled = True
+		generatorIsActive = False
+		throttle = 0
+		EVENTS
+		{
+			Activate
+			{
+				active = True
+				guiActive = True
+				guiIcon = Activate Generator
+				guiName = Electrical On
+				category = Activate Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+			Shutdown
+			{
+				active = True
+				guiActive = True
+				guiIcon = Shutdown Generator
+				guiName = Electrical Off
+				category = Shutdown Generator
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+			ToggleAction
+			{
+				actionGroup = None
+			}
+			ActivateAction
+			{
+				actionGroup = None
+			}
+			ShutdownAction
+			{
+				actionGroup = None
+			}
+		}
+	}
+	MODULE
+	{
+		name = BBModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = KOSNameTag
+		isEnabled = True
+		nameTag = 
+		EVENTS
+		{
+			PopupNameTagChanger
+			{
+				active = True
+				guiActive = True
+				guiActiveEditor = True
+				guiIcon = Change Name Tag
+				guiName = Change Name Tag
+				category = Change Name Tag
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = RefuelingPump
+		isEnabled = True
+		enablePump = False
+		pump_rate = 100
+		timestamp = 1013464.91244103
+		EVENTS
+		{
+			TogglePump
+			{
+				active = True
+				guiActive = False
+				guiActiveEditor = True
+				guiIcon = Toggle Pump
+				guiName = Toggle Pump
+				category = Toggle Pump
+				guiActiveUnfocused = False
+				unfocusedRange = 2
+				externalToEVAOnly = True
+			}
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = FlightEngineerModule
+		isEnabled = True
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = TweakScale
+		isEnabled = True
+		tweakScale = 1
+		currentScale = 1
+		defaultScale = 1
+		isFreeScale = False
+		version = 1.50.0.0
+		defaultTransformScale = (1, 1, 1)
+		DryCost = 100
+		tweakScale_UIEditor
+		{
+			controlEnabled = True
+			minValue = 0.625
+			maxValue = 5
+			incrementLarge = 1.25
+			incrementSmall = 0.125
+			incrementSlide = 0.001
+		}
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
+	}
+	MODULE
+	{
+		name = ModuleRTAntennaPassive
+		isEnabled = True
+		IsRTAntenna = True
+		IsRTActive = True
+		IsRTPowered = True
+		IsRTBroken = False
+		RTDishCosAngle = 1
+		RTOmniRange = 5000
+		RTDishRange = -1
+		EVENTS
+		{
+		}
+		ACTIONS
+		{
+		}
 	}
 }

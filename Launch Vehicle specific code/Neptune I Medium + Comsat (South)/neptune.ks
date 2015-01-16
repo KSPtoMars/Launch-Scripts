@@ -42,15 +42,19 @@ lock pitchangle to vang(fore,forehor)*((90-vang(fore,up))/abs(90-vang(fore,up)))
  
 lock glideslope to vang(srfprograde:vector,forehor)*((90-vang(srfprograde:vector,up))/abs(90-vang(srfprograde:vector,up))).
  
+
  
 print "Go for launch".
 print pitchangle.
-set i to 3.
+set i to 10.
 until i = 0{
 set i to i - 1.
 print "T-" + i.
 wait 1.
 }
+
+
+
 SET eList to SHIP:PARTSDUBBED("mainEngine").
 SET mainEngine to eList[0].
 lock throttle to 0.1.
@@ -60,59 +64,65 @@ print "Lift off!".
 wait 2.
 
 set i to 0.
-wait until altitude > 35000.
+wait until altitude > 15000.
 SAS off.
 SET SHIP:CONTROL:PITCH to 0.05.
-print "T+" + round(missiontime) + "s: " + "Deactivating SAS. Initiating gravity turn.".
+run writeLine("First pitchover").
 wait until pitchangle < 70.
 SET SHIP:CONTROL:NEUTRALIZE to TRUE.
-print "T+" + round(missiontime) + "s: " + "First Gravity turn complete. Activating SAS to stabilize.".
+run writeLine("First pitchover completed, awaiting SRB shutdown").
 sas on.
 wait until stage:solidfuel < 693.
+wait 3.
 stage.
-lock throttle to 0.5.
-wait until altitude >  60000.
+wait 1.
+run writeLine("SRB Seperation Confirmed.").
+lock throttle to 0.05.
+wait until altitude >  80000.
 lock throttle to 1.
 wait 5.
 SAS off.
-SET SHIP:CONTROL:PITCH to 0.1.
-print "T+" + round(missiontime) + "s: " + "Deactivating SAS. Initiating gravity turn.".
-wait until pitchangle < 50.
+SET SHIP:CONTROL:PITCH to 0.05.
+run writeLine("Second pitchover").
+wait until pitchangle < 45.
 SET SHIP:CONTROL:NEUTRALIZE to TRUE.
-print "T+" + round(missiontime) + "s: " + "First Gravity turn complete. Activating SAS to stabilize.".
+run writeLine("Second pitchover completed").
 sas on.
 wait 5.
-print "Waiting for meco".
+run writeLine("Waiting for first stage cutoff").
 wait until mainEngine:thrust = 0.
+run writeLine("MECO").
 stage.
 wait 1.
 stage.
+run writeLine("Stage two ignition confirmed").
 lock throttle to 1.
 wait 20.
 SAS off.
-SET SHIP:CONTROL:PITCH to 0.1.
-print "T+" + round(missiontime) + "s: " + "Deactivating SAS. Initiating gravity turn.".
-wait until pitchangle < 10.
+SET SHIP:CONTROL:PITCH to 0.05.
+run writeLine("Final pitchover").
+wait until pitchangle < 25.
 SET SHIP:CONTROL:NEUTRALIZE to TRUE.
-print "T+" + round(missiontime) + "s: " + "First Gravity turn complete. Activating SAS to stabilize.".
+run writeLine("Final pitchover completed").
 sas on.
-print "Waiting for SECO".
+run writeLine("Waiting for second stage shutdown").
 wait until stage:lqdhydrogen = 0.
+run writeLine("SECO").
 stage.
 wait 2.
 stage.
-SAS off.
-SET SHIP:CONTROL:PITCH to 0.1.
-print "T+" + round(missiontime) + "s: " + "Deactivating SAS. Initiating gravity turn.".
-wait until pitchangle < 0.
-SET SHIP:CONTROL:NEUTRALIZE to TRUE.
-print "T+" + round(missiontime) + "s: " + "First Gravity turn complete. Activating SAS to stabilize.".
-sas on.
+run writeLine("Final stage ignition confirmed").
+run writeLine("Waiting for apoapsis to reach target").
 wait until apoapsis > 40000000.
 lock throttle to 0.
+run writeLine("Engine shutdown").
 wait 5.
 stage.
+run writeLine("Payload separation").
 toggle ag1.
+run writeLine("Dishes deployed").
 wait 5.
 sas off.
+wait 10.
+clearscreen.
 run calculateBurn(500000).
