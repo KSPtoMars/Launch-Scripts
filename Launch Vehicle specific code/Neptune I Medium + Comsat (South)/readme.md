@@ -10,4 +10,4 @@ run neptune.
 Use AG2 and 3 to swap between on-board camera.
 DO NOT PRESS AG1, this will open up all the dishes and solar panels and can not be undone.
 
-This still WIP, the SRB's seperate a little too early and it goes too fast too soon and heats up quite a lot.
+Pretty much the final version - Will make small revisions closer to launch
