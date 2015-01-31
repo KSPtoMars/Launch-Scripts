@@ -1,0 +1,121 @@
+SAS off.
+
+lock throttle to 1.
+stage.
+// Determine launch pad orientation
+set rollzero to ship:facing:roll.
+set pitchzero to ship:facing:pitch.
+set yawzero to ship:facing:yaw.
+
+// This is the ACTual value that kOS is reading from SHIP:FACING
+lock actroll to ship:facing:roll.
+lock actpitch to ship:facing:pitch.
+lock actyaw to ship:facing:yaw.
+
+// Determine the angles from original launch pad orientation
+lock roll to actroll-rollzero.
+lock pitch to actpitch-pitchzero.
+lock yaw to actyaw-yawzero.
+
+// Set the desired Roll/Pitch/Yaw of the craft and Gains, Roll/Pitch/Yaw can be locked to a changing variable
+set rolldesired to 25.
+lock Rerror to roll-rolldesired.
+set RKp to 0.0075.
+set RKi to 0.001. //previous value was .00005, need to test this one!!!
+set RKd to 0.02.
+
+set pitchdesired to 0.
+lock Perror to pitch-pitchdesired.
+set PKp to -0.02.
+set PKi to -0.001. //previous value was .00005, need to test this one!!!
+set PKd to -0.05	.
+
+lock yawdesired to -15*altitude/20000.
+lock Yerror to yaw-yawdesired.
+set YKp to .02.
+set YKi to .001. //previous value was .00005, need to test this one!!!
+set YKd to 0.05.
+
+//Initialize the Integral
+set Rerrorintg to 0.
+set Perrorintg to 0.
+set Yerrorintg to 0.
+
+//Set up the CSV file with information on parameters of the code
+clearscreen.
+delete data.csv.
+log "RKp=" + RKp + ",RKi=" + RKi + ",RKd=" + RKd to data.csv.
+log "PKp=" + PKp + ",PKi=" + PKi + ",PKd=" + PKd to data.csv.
+log "YKp=" + YKp + ",YKi=" + YKi + ",YKd=" + YKd to data.csv.
+log "Desired: Roll=" + rolldesired + " Pitch=" + pitchdesired + " Yaw=" + yawdesired to data.csv.
+log "Time,Roll,RollDesired,Pitch,PitchDesired,Yaw,YawDesired" to data.csv.
+
+// 't' is used to determine the Error Integral and Derivative 
+set start to time:seconds.
+lock t to time:seconds - start.
+
+until 1 = 2 {
+	//Some Troubleshooting stuff
+	print "Roll" at (0,1).
+	print round(roll-rollzero,2) at (15,1).
+	print "Pitch" at (0,2).
+	print round(pitch-pitchzero,2) at (15,2).
+	print "Yaw" at (0,3).
+	print round(yaw-yawzero,2) at (15,3).
+
+	print "Real Roll" at (0,5).
+	print round(roll,2) at (15,5).
+	print "Real Pitch" at (0,6).
+	print round(pitch,2) at (15,6).
+	print "Real Yaw" at (0,7).
+	print round(yaw,2) at (15,7).
+	
+	print "Desired Roll" at (0,9).
+	print round(rolldesired,2) at (15,9).
+	print "Desired Pitch" at (0,10).
+	print round(pitchdesired,2) at (15,10).
+	print "Desired Yaw" at (0,11).
+	print round(yawdesired,2) at (15,11).
+
+	//print "Pitch Error" at (0,9).
+	//print round(Perror,2) at (15,9).
+	
+  //Begin calculation of Error Integral and Derivative, the FIRST letter in each variable denotes the axis ex: R is for Roll
+  //'Xerror' is the porportional value. 'Xerror1 or 2' are used to calculate Integral 'Xerrorint' and Derivative 'Xerrorder' of the Error
+	set Rerror1 to Rerror.
+	set Perror1 to Perror.
+	set Yerror1 to Yerror.
+	
+	set t1 to time:seconds.
+	wait .0001.
+	
+	set Rerror2 to Rerror.
+	set Perror2 to Perror.
+	set Yerror2 to Yerror.
+	set t2 to time:seconds.
+	set dt to t2-t1.
+	
+	set Rerrorintg to Rerrorintg+(dt*(Rerror1+Rerror2))/2.
+	set Perrorintg to Perrorintg+(dt*(Perror1+Perror2))/2.
+	set Yerrorintg to Yerrorintg+(dt*(Yerror1+Yerror2))/2.
+	
+	set Rerrorder to (Rerror2-Rerror1)/dt.
+	set Perrorder to (Perror2-Perror1)/dt.
+	set Yerrorder to (Yerror2-Yerror1)/dt.
+	
+	// Here is where the control power is set
+	set ship:control:roll to Rerror*RKp + Rerrorintg*RKi + Rerrorder*RKd.
+	set ship:control:pitch to Perror*PKp + Perrorintg*PKi + Perrorder*PKd.
+	set ship:control:yaw to Yerror*YKp + Yerrorintg*YKi + Yerrorder*YKd.
+
+	//print "Pitch Control" at (0,10).
+	//print round(ship:control:roll,3) at (15,10).
+
+	//print "Pitch Int" at (0,12).
+	//print round(Rerrorintg,2) at (15,12).
+	//print "Pitch Der" at (0,13).
+	//print round(Rerrorder,4) at (15,13).
+
+  //Time, The Roll/Pitch/Yaw, the Desired Roll/Pitch/Yaw are logged to the 'data.csv' file for further analysis
+	log t +","+ roll +","+ rolldesired +","+ pitch +","+ pitchdesired +","+ yaw +","+ yawdesired to data.csv.
+}
