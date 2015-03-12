@@ -59,8 +59,8 @@ SET SHIP:CONTROL:YAW TO orientvector_yawRate.
 PRINT "vectorAngle:" + ROUND(steerangles_vectorAngle, 2) at (1,3).
 PRINT "facingAngle:" + ROUND(steerangles_facingAngle, 2) at (1,4).
 	
-PRINT "Pitch Rate: " + orientvector_pitchRate at (1,6).
+PRINT "Pitch Rate: " + ROUND(100*orientvector_pitchRate,2) + "%    " at (1,6).
 PRINT "Pitch Angle: " + ROUND(pitchAngle, 2) at (1,7).
 	
-PRINT "Yaw Rate: " + orientvector_yawRate at (1,10).
+PRINT "Yaw Rate: " + ROUND(100*orientvector_yawRate,2) + "%     " at (1,10).
 PRINT "Yaw Angle: " + ROUND(yawAngle, 2) at (1,11).
