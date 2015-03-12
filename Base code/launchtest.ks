@@ -39,11 +39,11 @@ set Gnot to ship:body:mu/(ship:body:radius)^2.
 // within the ballpark  range or your final circular orbit height.
 
 set pitch_angle to 2.5.
-set pitch_time to 5.
-set pitch_velocity to 25.
+lock pitch_stop to vectorangle(UP:vector, velocity:surface).
+set pitch_velocity to 45.
 set desired_inc to 33. 
 
-set Azimuth to 90. // Azimuth angle desired
+set Azimuth to 110. // Azimuth angle desired
 
 set Rcir to 229000. // Radius of Circular Orbit
 
@@ -68,13 +68,13 @@ set yawDer to 0.
 //set RKi to 0.//0.0005. 
 //set RKd to 0.//0.01.
 
-set pitchKp to 0.
-set pitchKi to 0.
-set pitchKd to 0.
+set pitchKp to 0.0075.
+set pitchKi to 0.001.
+set pitchKd to 0.015.
 
-set yawKp to -0.005.
-set yawKi to -0.
-set yawKd to -0.
+set yawKp to -0.0075.
+set yawKi to -0.001.
+set yawKd to -0.015.
 
 run filesetup.
 
@@ -98,18 +98,15 @@ until verticalspeed > pitch_velocity {
 SAS off.
 
 lock direction_desired to Heading(Azimuth,90 - pitch_angle).
-set pitch_start to time:seconds.
-lock pitch_finish to time:seconds - pitch_start.
 
 clearscreen.
 
-until pitch_finish > pitch_time {
+until pitch_stop > .9*pitch_angle {
 	
 	run staging.
 	
 	print "Performing Pitch Over Maneuver" at (0,0).
-	print "Maneuver Time: " + round(pitch_finish,2) at(0,1).
-	
+		
 	run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
 	
 	run logdata.
@@ -133,9 +130,9 @@ until IncDifference < .01 {
 	}
 	
 	
-lock direction_desired to Heading(Azimuth,90-vectorangle(-1*body:position,velocity:orbit)).
+lock direction_desired to velocity:orbit:direction.
 
-until apoapsis > Rcir OR verticalspeed < 0 {
+until apoapsis > Rcir OR verticalspeed < 2.5 {
 	
 	run staging.
 	
@@ -148,7 +145,13 @@ until apoapsis > Rcir OR verticalspeed < 0 {
 	}
 
 if apoapsis > Rcir AND verticalspeed > 0 {
+
 	lock throttle to .1.
+	
+	lock down_angle to 90-vectorangle(UP:vector,velocity:orbit).
+	lock PitchDown to angleaxis(down_angle,vcrs(up:vector,prograde:vector)).
+	lock direction_desired to velocity:orbit:direction.
+	
 	until verticalspeed < 1 {
 		run staging.
 	
@@ -169,21 +172,33 @@ lock orbitalspeed to velocity:orbit:mag.
 lock horizontalspeed to sqrt(orbitalspeed^2 - verticalspeed^2).
 lock centripedal to (horizontalspeed^2)/ShipRadius.
 lock DownwardAcc to gravity - centripedal.
-set errorP to -.001.
+set errorP to -.01.
 lock pitch_correction to errorP*verticalspeed.
-lock pitch_cnstalt to arcsin(mass*DownwardAcc/maxthrust) + pitch_correction.
+lock pitch_cnstalt to arcsin(mass*DownwardAcc/maxthrust) - pitch_correction.
 
-lock PitchUp to angleaxis(pitch_cnstalt,vcrs(up:vector,prograde:vector)).
+lock PitchUp to angleaxis(pitch_cnstalt,vcrs(prograde:vector,up:vector)).
 lock direction_desired to PitchUp*prograde.
+
+lock Rcurrent to altitude + ship:body:radius.
+lock CirVelocity to sqrt(ship:body:MU/Rcurrent).
+lock deltaV to CirVelocity - velocity:orbit:mag.
 
 
 // CAUTION!: This part is untested but its a starting point for the constant altitude burn. Use with caution.
-until obt:eccentricity < .1 AND periapsis > 200000 {
+until deltaV < 1  {
+
+	if verticalspeed > 0 {
+		lock direction_desired to prograde.
+		}
+	
+	if verticalspeed < 0 {
+		lock direction_desired to PitchUp*prograde.
+		}
 	
 	run staging.
 	
 	print "Performing Circular Injection Phase" at (0,0).
-	
+	print "Delta-V for Circular Orbit at Current Orbit: " + round(deltaV,2) at (0,1).
 	run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
 	
 	run logdata.
