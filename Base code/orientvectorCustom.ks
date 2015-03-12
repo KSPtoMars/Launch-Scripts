@@ -42,7 +42,7 @@ SET dt TO t1 - t0.
 //Corrects the Pitch Angle
 set pitchEavg to (pitchE0+pitchE1)/2.
 set pitchIntg to pitchIntg + (dt*(pitchEavg)).
-set pitchDer to (pitchE0-pitchE1)/dt.
+set pitchDer to (pitchE1-pitchE0)/dt.
 
 SET orientvector_pitchRate TO pitchKp*pitchEavg + pitchKi*pitchIntg + pitchKd*pitchDer.
 SET SHIP:CONTROL:PITCH TO orientvector_pitchRate.
@@ -50,7 +50,7 @@ SET SHIP:CONTROL:PITCH TO orientvector_pitchRate.
 //Corrects the Yaw angle
 set yawEavg to (yawE0+yawE1)/2.
 set yawIntg to yawIntg + (dt*(yawEavg)).
-set yawDer to (yawE0-yawE1)/dt.
+set yawDer to (yawE1-yawE0)/dt.
 
 SET orientvector_yawRate TO yawKp*yawEavg + yawKi*yawIntg + yawKd*yawDer.
 SET SHIP:CONTROL:YAW TO orientvector_yawRate.
