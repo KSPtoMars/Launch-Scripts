@@ -4,6 +4,7 @@
 
 /// *** DEPENDENCIES ***
 //steerangles.ks
+//getRollRate.ks
 
 /// *** INPUT ***
 //steerVector - the vector in 3d rotational space (x,y,z) at which the ship should point
@@ -13,19 +14,24 @@
 //yawKp - the gain value for the proportional term of yaw PID loop
 //yawKi - the gain value for the integral term of pitch PID loop
 //yawKd - the gain value for the derivative term of yaw PID loop 
+//rollKp - the gain value for the proportional term of roll PID loop
+//rollKi - the gain value for the integral term of roll PID loop
+//rollKd - the gain value for the derivative term of roll PID loop 
  
 /// *** OUTPUT ***
 //None. There is only physical outputs (the ship moves).
 //
 	
-DECLARE PARAMETER steerVector, pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd.
+DECLARE PARAMETER steerVector, pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd, rollKp, rollKi, rollKd.
 
-//TODO: If we are running low on computational time, we can remove one of the two steerangles and simply store a value from the last iteration.
+//Note: If we are running low on computational time, we can remove one of the two steerangles and simply store a value from the last iteration.
 
 RUN steerangles.
 SET pitchE0 TO pitchAngle.
 SET yawE0 TO yawAngle.
 SET rollE0 TO VXCL(SHIP:FACING:STARVECTOR, steerVector).
+run getRollRate.
+SET rollRateE0 TO getRollRate_rollRate.
 
 SET t0 TO TIME:SECONDS.
 WAIT 0.0001.
@@ -36,6 +42,8 @@ SET pitchE1 TO pitchAngle.
 SET yawE1 TO yawAngle.
 SET rollE1 TO VXCL(SHIP:FACING:STARVECTOR, steerVector).
 SET rollAngle TO rollE1.
+run getRollRate.
+SET rollRateE1 TO getRollRate_rollRate.
 
 SET dt TO t1 - t0.
 
@@ -54,6 +62,11 @@ set yawDer to (yawE1-yawE0)/dt.
 
 SET orientvector_yawRate TO yawKp*yawEavg + yawKi*yawIntg + yawKd*yawDer.
 SET SHIP:CONTROL:YAW TO orientvector_yawRate.
+
+//Corrects the Roll Rate
+run PIDcontrol(rollRateE1,rollKp,rollKi,rollKd,0,rollRateE0,dt).
+SET SHIP:CONTROL:ROLL TO PIDcontrol_output.
+
 
 //Useful for debugging	
 PRINT "vectorAngle:" + ROUND(steerangles_vectorAngle, 2) at (1,3).
