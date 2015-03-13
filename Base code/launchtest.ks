@@ -41,9 +41,9 @@ set Gnot to ship:body:mu/(ship:body:radius)^2.
 set pitch_angle to 2.5.
 lock pitch_stop to vectorangle(UP:vector, velocity:surface).
 set pitch_velocity to 45.
-set desired_inc to 33. 
+set desired_inc to 33.676. 
 
-set Azimuth to 110. // Azimuth angle desired
+set Azimuth to 111. // Azimuth angle desired
 
 set Rcir to 229000. // Radius of Circular Orbit
 
@@ -69,11 +69,11 @@ set yawDer to 0.
 //set RKd to 0.//0.01.
 
 set pitchKp to 0.0075.
-set pitchKi to 0.001.
+set pitchKi to 0.000875.
 set pitchKd to 0.015.
 
 set yawKp to -0.0075.
-set yawKi to -0.001.
+set yawKi to -0.000875.
 set yawKd to -0.015.
 
 run filesetup.
@@ -115,56 +115,94 @@ until pitch_stop > .9*pitch_angle {
 	
 lock direction_desired to Heading(Azimuth,90-vectorangle(-1*body:position,velocity:surface)).
 lock IncDifference to abs(desired_inc - ship:obt:inclination).	
-	
-until IncDifference < .01 {
-	
-	run staging.
-	
-	print "Following Surface Velocity Vector    " at (0,0).
-	print "                             " at (0,1).
-	
-	run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
-	
-	run logdata.
-	
-	}
-	
-	
-lock direction_desired to velocity:orbit:direction.
 
+set Phase to 1.
+	
 until apoapsis > Rcir OR verticalspeed < 2.5 {
 	
-	run staging.
+	if Phase = 1 {
 	
-	print "Following Orbital Velocity Vector    " at (0,0).
+		run staging.
 	
-	run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+		print "Following Surface Velocity Vector    " at (0,0).
+		
+		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
 	
-	run logdata.
-	
+		run logdata.
+		
+		if IncDifference < .01 {
+		
+			set Phase to 2.
+			
+			lock direction_desired to velocity:orbit:direction.
+			
+		}
 	}
+	
+	if Phase = 2 {
+		run staging.
+	
+		print "Following Orbital Velocity Vector    " at (0,0).
+	
+		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+	
+		run logdata.
+		
+	}
+}
 
-if apoapsis > Rcir AND verticalspeed > 0 {
+if apoapsis > Rcir AND verticalspeed > 1 {
 
 	lock throttle to .1.
 	
 	lock down_angle to 90-vectorangle(UP:vector,velocity:orbit).
 	lock PitchDown to angleaxis(down_angle,vcrs(up:vector,prograde:vector)).
-	lock direction_desired to velocity:orbit:direction.
+	lock direction_desired to PitchDown*velocity:orbit:direction.
+	
+	lock direction_desired to Heading(Azimuth,0).
 	
 	until verticalspeed < 1 {
-		run staging.
-	
-		print "Waiting for Apogee T-" + round(eta:apoapsis,2) + " seconds" at (0,0).
-	
-		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
 		
-		run logdata.
+		if Phase = 1 {
+			
+			run staging.
+	
+			print "Waiting for Apogee T-" + round(eta:apoapsis,2) + " seconds" at (0,0).
+			
+			print "Target Inclination Difference: " + round(IncDifference,2) + "    " at (0,1).
+			
+			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+		
+			run logdata.
 	
 		}
+		
+		if IncDifference < .01 {
+		
+			set Phase to 2.
+			
+			lock down_angle to 90-vectorangle(UP:vector,velocity:orbit).
+			lock PitchDown to angleaxis(down_angle,vcrs(up:vector,prograde:vector)).
+			lock direction_desired to PitchDown*velocity:orbit:direction.
+			
+		}
+		
+		if Phase = 2 {
+		
+			run staging.
 	
+			print "Waiting for Apogee T-" + round(eta:apoapsis,2) + " seconds" at (0,0).
+			
+			print "                                                          " at (0,1).
+			
+			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+		
+			run logdata.
+		}
+		
 		lock throttle to 1.
 	}
+}
 	
 lock ShipRadius to ship:body:radius + altitude.
 lock gravity to ship:body:mu/(ShipRadius^2).
@@ -172,9 +210,9 @@ lock orbitalspeed to velocity:orbit:mag.
 lock horizontalspeed to sqrt(orbitalspeed^2 - verticalspeed^2).
 lock centripedal to (horizontalspeed^2)/ShipRadius.
 lock DownwardAcc to gravity - centripedal.
-set errorP to -.01.
+set errorP to -.025.
 lock pitch_correction to errorP*verticalspeed.
-lock pitch_cnstalt to arcsin(mass*DownwardAcc/maxthrust) - pitch_correction.
+lock pitch_cnstalt to arcsin(mass*DownwardAcc/maxthrust) + pitch_correction.
 
 lock PitchUp to angleaxis(pitch_cnstalt,vcrs(prograde:vector,up:vector)).
 lock direction_desired to PitchUp*prograde.
@@ -185,20 +223,30 @@ lock deltaV to CirVelocity - velocity:orbit:mag.
 
 
 // CAUTION!: This part is untested but its a starting point for the constant altitude burn. Use with caution.
-until deltaV < 1  {
+until deltaV < .1  {
 
 	if verticalspeed > 0 {
+		
+		lock PitchUp to angleaxis(pitch_cnstalt*.5,vcrs(prograde:vector,up:vector)).
+		
 		lock direction_desired to prograde.
+		
 		}
 	
 	if verticalspeed < 0 {
+		
+		lock PitchUp to angleaxis(pitch_cnstalt,vcrs(prograde:vector,up:vector)).
+		
 		lock direction_desired to PitchUp*prograde.
+		
 		}
 	
 	run staging.
 	
 	print "Performing Circular Injection Phase" at (0,0).
-	print "Delta-V for Circular Orbit at Current Orbit: " + round(deltaV,2) at (0,1).
+	
+	print "Delta-V for Circular Orbit: " + round(deltaV,2) at (0,1).
+	
 	run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
 	
 	run logdata.
