@@ -45,7 +45,7 @@ set desired_inc to 33.676.
 
 set Azimuth to 111. // Azimuth angle desired
 
-set Rcir to 229000. // Radius of Circular Orbit
+set Rcir to 229000. // Altitude of Circular Orbit
 
 //I use a gravity turn and so I set the angle (pitch_angle) that I want the ship to be and what vertical speed (pitch_velocity) it will start the pitch.
 // After it reaches that velocity, it should be at the desired angle and from then on it will follow the surface prograde 
