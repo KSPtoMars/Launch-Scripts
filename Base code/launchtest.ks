@@ -7,6 +7,8 @@
 //	steerangles.ks
 // 	orientvectorCustom.ks
 //	staging.ks
+//	getRollRate.ks
+//	PIDcontrol.ks
 
 // USER DEFINED PARAMETERS:
 //	PID gains for Pitch and Yaw: I have some starting values but each ship will have different ones that you will
@@ -76,6 +78,10 @@ set yawKp to -0.0075.
 set yawKi to -0.000875.
 set yawKd to -0.015.
 
+set rollKp to 0.01.
+set rollKi to 0.
+set rollKd to 0.
+
 run filesetup.
 
 set start to time:seconds.
@@ -126,7 +132,7 @@ until apoapsis > Rcir OR verticalspeed < 2.5 {
 	
 		print "Following Surface Velocity Vector    " at (0,0).
 		
-		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd, rollKp, rollKi, rollKd).
 	
 		run logdata.
 		
@@ -144,7 +150,7 @@ until apoapsis > Rcir OR verticalspeed < 2.5 {
 	
 		print "Following Orbital Velocity Vector    " at (0,0).
 	
-		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+		run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd, rollKp, rollKi, rollKd).
 	
 		run logdata.
 		
@@ -171,7 +177,7 @@ if apoapsis > Rcir AND verticalspeed > 1 {
 			
 			print "Target Inclination Difference: " + round(IncDifference,2) + "    " at (0,1).
 			
-			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd, rollKp, rollKi, rollKd).
 		
 			run logdata.
 	
@@ -195,7 +201,7 @@ if apoapsis > Rcir AND verticalspeed > 1 {
 			
 			print "                                                          " at (0,1).
 			
-			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd).
+			run orientvectorCustom(direction_desired:vector,  pitchKp, pitchKi, pitchKd, yawKp, yawKi, yawKd, rollKp, rollKi, rollKd).
 		
 			run logdata.
 		}
